@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined');
+
+:host {
+    display: flex;
+    justify-content: center;
+    font-family: var(--inter-font);
+}
+
+/* ---------- Select shell ---------- */
+.select {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 2.75rem;
+    border-radius: 0.75rem;
+
+    color: var(--primary-contrast);
+    background:
+        linear-gradient(180deg,
+            color-mix(in srgb, var(--hot-pink) 6%, transparent),
+            color-mix(in srgb, var(--hot-pink) 2%, transparent));
+
+    border: 1px solid color-mix(in srgb, var(--hot-pink) 35%, transparent);
+
+    transition:
+        background-color 150ms ease,
+        border-color 150ms ease,
+        box-shadow 150ms ease;
+}
+
+.select:hover {
+    background:
+        linear-gradient(180deg,
+            color-mix(in srgb, var(--hot-pink) 10%, transparent),
+            color-mix(in srgb, var(--hot-pink) 4%, transparent));
+}
+
+/* Focus ring */
+[ngCombobox]:focus-within .select {
+    border-color: color-mix(in srgb, var(--hot-pink) 60%, transparent);
+    box-shadow:
+        0 0 0 3px color-mix(in srgb, var(--hot-pink) 25%, transparent),
+        0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Disabled */
+.select:has([ngComboboxInput][aria-disabled='true']) {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* ---------- Input ---------- */
+[ngComboboxInput] {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    padding: 0 3rem;
+    border: none;
+}
+
+/* ---------- Label ---------- */
+.combobox-label {
+    position: absolute;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    pointer-events: none;
+
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--secondary-contrast);
+}
+
+.selected-label-icon {
+    font-size: 1.2rem;
+    color: var(--hot-pink);
+}
+
+/* ---------- Arrow ---------- */
+.example-arrow {
+    position: absolute;
+    right: 1rem;
+    pointer-events: none;
+    font-size: 1.1rem;
+    color: var(--secondary-contrast);
+    transition: transform 180ms ease, color 180ms ease;
+}
+
+[ngComboboxInput][aria-expanded='true']~.example-arrow {
+    transform: rotate(180deg);
+    color: var(--hot-pink);
+}
+
+/* ---------- Popup ---------- */
+.example-popup-container {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    width: 100%;
+    max-height: 12rem;
+
+    border-radius: 0.75rem;
+    background:
+        linear-gradient(180deg,
+            var(--septenary-contrast),
+            color-mix(in srgb, var(--septenary-contrast) 92%, black));
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.18),
+        0 4px 10px rgba(0, 0, 0, 0.12);
+
+    font-size: 0.9rem;
+
+    opacity: 1;
+    visibility: visible;
+    transition:
+        max-height 180ms ease-out,
+        opacity 120ms ease-out;
+}
+
+/* Closed */
+[ngCombobox]:has([ngComboboxInput][aria-expanded='false']) .example-popup-container {
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        max-height 160ms ease-in,
+        opacity 120ms ease-in,
+        visibility 0s 160ms;
+}
+
+/* ---------- Listbox ---------- */
+[ngListbox] {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+/* ---------- Options ---------- */
+[ngOption] {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    min-height: 2.5rem;
+    padding: 0 1rem;
+    border-radius: 0.6rem;
+
+    cursor: pointer;
+    color: var(--primary-contrast);
+
+    transition:
+        background-color 120ms ease,
+        color 120ms ease,
+        transform 60ms ease;
+}
+
+[ngOption]:hover {
+    background-color: color-mix(in srgb, var(--primary-contrast) 6%, transparent);
+}
+
+/* Keyboard active */
+[ngOption][data-active='true'] {
+    background-color: color-mix(in srgb, var(--hot-pink) 10%, transparent);
+    outline: none;
+}
+
+/* Selected */
+[ngOption][aria-selected='true'] {
+    background:
+        linear-gradient(90deg,
+            color-mix(in srgb, var(--hot-pink) 18%, transparent),
+            color-mix(in srgb, var(--hot-pink) 6%, transparent));
+    color: var(--hot-pink);
+    font-weight: 500;
+}
+
+/* Icons */
+.example-option-icon {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.example-option-check {
+    font-size: 0.9rem;
+    color: var(--hot-pink);
+}
+
+[ngOption]:not([aria-selected='true']) .example-option-check {
+    display: none;
+}
+
+.example-option-text {
+    flex: 1;
+}
