@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined');
+
+:host {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+  font-family: var(--inter-font);
+  background: var(--surface-background, transparent);
+}
+
+/* Accordion container */
+[ngAccordionGroup] {
+  width: 520px;
+  background: var(--primary-surface, transparent);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.08),
+    0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* Headings */
+h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--secondary-contrast);
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+/* Divider between items */
+h3:not(:first-of-type) {
+  border-top: 1px solid var(--senary-contrast);
+}
+
+/* Hover + focus indicator */
+h3::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: transparent;
+  transition: background-color 0.25s ease;
+}
+
+h3:hover::before,
+h3:focus-within::before {
+  background: var(--electric-violet);
+}
+
+/* Trigger button */
+[ngAccordionTrigger] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  outline: none;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+/* Expanded state */
+[ngAccordionTrigger][aria-expanded='true'] {
+  background: linear-gradient(90deg,
+      rgba(176, 38, 255, 0.12),
+      rgba(236, 72, 153, 0.12));
+  color: var(--electric-violet);
+  font-weight: 600;
+}
+
+/* Disabled */
+[ngAccordionTrigger][aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Content panel */
+p {
+  margin: 0;
+  padding: 0 1.5rem 1.75rem 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--tertiary-contrast);
+}
+
+/* Expand icon container */
+.expand-icon {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+/* Icon bars */
+.expand-icon::before,
+.expand-icon::after {
+  content: '';
+  position: absolute;
+  inset: 50% 0 auto 0;
+  height: 2px;
+  background-color: currentColor;
+  transform-origin: center;
+  transition:
+    transform 0.3s ease,
+    opacity 0.2s ease;
+}
+
+/* Vertical bar */
+.expand-icon::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* Expanded icon animation */
+.expand-icon__expanded {
+  transform: rotate(180deg);
+}
+
+.expand-icon__expanded::before {
+  opacity: 0;
+}
+
+.expand-icon__expanded::after {
+  transform: translateY(-50%) rotate(0deg);
+}

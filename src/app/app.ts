@@ -1,13 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { RouterOutlet } from '@angular/router';
+import { Accordion } from './components/aria/accordion/accordion';
 
 @Component( {
     selector: 'app-root',
-    imports: [
-        MatSlideToggleModule,
-        RouterOutlet
-    ],
+    imports: [ Accordion ],
     templateUrl: './app.html',
     styleUrl: './app.css'
 } )
